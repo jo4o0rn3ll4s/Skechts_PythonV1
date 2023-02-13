@@ -4,8 +4,7 @@ import funciCPF as cc
 
 sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
-layout = [  [sg.Text('VALIDADOR DE CPF')],
-            [sg.Text('Digite seu CPF para consulta :'), sg.InputText()],
+layout = [  [sg.Text('Digite seu CPF para consulta :'), sg.InputText()],
             [sg.Button('Ok'), sg.Button('Cancel')] ]
 
 # Create the Window
