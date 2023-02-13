@@ -1,6 +1,6 @@
 
 def vericpf(cpf):
-    if cpf <= 11111111111 or cpf >= 99999999999:
+    if False:#cpf <= 11111111111 or cpf >= 99999999999:
             return False
     else:
         sep = list()
