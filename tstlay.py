@@ -1,4 +1,4 @@
-#n funci
+# Não Funciona
 '''
 import PySimpleGUI as sg
 
@@ -35,5 +35,4 @@ while True:
     if event == 'Janela Principal':
         est = 0
         janela = sg.Window('Teste', lis_lay[est])
-
 '''
