@@ -62,5 +62,4 @@ def jalB():
             jalA()
     janelaB.close()
 
-
 main()

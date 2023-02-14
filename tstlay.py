@@ -1,3 +1,5 @@
+#n funci
+'''
 import PySimpleGUI as sg
 
 sg.theme('DarkAmber')
@@ -34,3 +36,4 @@ while True:
         est = 0
         janela = sg.Window('Teste', lis_lay[est])
 
+'''
