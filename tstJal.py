@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 
-sg.theme('DarkAmber')
+sg.theme('Black')
 menu_def = [['Janelas', ['Janela_Main', 'Janela_A', 'Janela_B']],
             ['Sair', ['Sair']]]
 

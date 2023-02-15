@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 #import valcpf as cc
 import funciCPF as cc
 
-sg.theme('DarkAmber')   # Add a touch of color
+sg.theme('Reddit')   # Add a touch of color
 # All the stuff inside your window.
 layout = [  [sg.Text('Digite seu CPF para consulta :'), sg.InputText()],
             [sg.Button('Ok'), sg.Button('Cancel')] ]
