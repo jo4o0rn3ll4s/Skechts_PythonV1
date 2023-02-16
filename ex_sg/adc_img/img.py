@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from bases import logopy,check,cancel,gifpy
+from bases import logopy,check,cancel
 
 sg.theme('Reddit')
 confBot = (sg.theme_background_color(),sg.theme_background_color(),sg.theme_border_width(0))

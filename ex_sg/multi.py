@@ -88,3 +88,5 @@ def jalB():
         if evento == 'Janela_Main':
             janelaB.close()
     janelaB.close()
+
+jalMain()
