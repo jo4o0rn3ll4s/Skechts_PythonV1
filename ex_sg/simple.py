@@ -5,8 +5,9 @@ sg.theme('DarkAmber')
 
 # Cria a ideia de design da interface
 layout = [  [sg.Text('Um texto qualquer')],
-            [sg.Text('Digite algo qualquer ->'), sg.InputText()],
-            [sg.Button('Ok'), sg.Button('Cancel')] ]
+            [sg.Text('Digite o primeiro valor'), sg.InputText()],
+            [sg.Text('Digite o segundo valor'), sg.InputText()],
+            [sg.Button('Soma'), sg.Button('Subtrai')] ]
 
 # Cria o objeto 'janela' com a propriedade .Window
 janela = sg.Window('Titulo', layout)
@@ -15,9 +16,12 @@ janela = sg.Window('Titulo', layout)
 # até que a mesma seja encerrada
 while True:
     event, values = janela.read()
-    if event == sg.WIN_CLOSED or event == 'Cancel':
+    if event == sg.WIN_CLOSED:
         break
-    print('Você digitou:', values[0])
+    if event == 'Soma':
+        va_soma = int(values[0]) + int(values[1])
+        sg.popup(f'O valor da soma foi {va_soma}',grab_anywhere=True)
+    
 
 # Encerramento da janela
 janela.close()
