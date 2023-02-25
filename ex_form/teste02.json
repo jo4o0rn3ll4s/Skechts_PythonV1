@@ -1,0 +1,11 @@
+{    
+    "per": ["1- meu nome e ?",
+            "2- minha idade e ?",
+            "3- sou formado em ?",
+            "4- qual linguagem eu nao programo ?"],
+    "opc": [["a- Jose", "b- Joao", "c- Jairo"],
+            ["a- 18","b- 19","c- 20"],
+            ["a- info","b- mec","c- el"],
+            ["a- java","b- python","c- c/c++"]],
+    "gab": ["b","b","c","a"]
+}
