@@ -19,6 +19,8 @@ while i < len(form['per']):
     if inter == 'a' or inter == 'b' or inter == 'c':
         resp.append(inter)
         i += 1
+    else:
+        print('\nresponda com uma das opções oferecidas\n')
 
 for i in range(len(form['gab'])):
     point += 1 if form['gab'][i] == resp[i] else 0
