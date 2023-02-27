@@ -1,10 +1,17 @@
 import json
 
 file = json.load(open('teste_json/teste_json_sisEscolar/teste01.json','r'))
-ata = ('nomes','documentos','turmas')
+ata = ['nomes',['RG','CPF','CEP'],'turmas']
+aluno = 0
 
 for i in range(len(file['alunos'])):
-    print(file['alunos'][ata[i]])
+    if i == 1:
+        for j in range(3):
+            print(file['alunos'][ata[i]][ata[i][j]][aluno])
+    else:
+        print(file['alunos'][ata[i]][aluno])
+    
+
 '''
 print(file['alunos']['nomes'][1])
 print(file['alunos']['documentos']['rg'][1])
