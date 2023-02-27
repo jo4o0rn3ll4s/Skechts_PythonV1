@@ -2,7 +2,7 @@
 from database import form
 '''
 import json
-form = json.load(open('ex_form/teste02.json', 'r'))
+form = json.load(open('teste_json/teste02.json', 'r'))
 
 resp = list()
 point = 0

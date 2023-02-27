@@ -1,0 +1,11 @@
+{
+    "alunos":{
+              "nomes":["Joao","Maria","Rodrigo"],
+              "documentos":{
+                            "rg":[307407429,303030309,123456789],
+                            "cpf":[15127057727,12345678910,10987654321],
+                            "cep":[26550040,26600050,28900666]
+                           },
+              "turmas":["robotica","programacao","excel"]
+             }
+}
