@@ -1,15 +1,6 @@
-import pandas as pd
-
-turma = 1 #1 ou 2
-df = pd.read_csv('teste_pandas/teste_pd - Página'+str(turma)+'.csv')
-
-cols = ['Nomes','RG','CPF','CEP','Curso']
-opc = ['programacao','excel','manutencao','informatica']
-tab = 28
-cod = list()
-pesq = int
-
 '''
+Transformar em funções
+#######################################################
 #print em toda tabela
 for i in cols:
     print(f'{i:<{tab}}',end=' ')
@@ -18,7 +9,8 @@ for j in range(len(df['Nomes'])):
     for i in range(len(cols)):
         print(f'{df[cols[i]][j]:<{tab}}',end=' ')
     print()
-'''
+#######################################################
+#seletor de opção
 cont = 0
 for i in opc:
     cont += 1
@@ -27,8 +19,7 @@ esc = int(input('Selecione o curso a pesquisar: '))
 for i in range(len(opc)):
     if esc == i:
         pesq = opc[i]
-
-#'''
+#######################################################
 #print pesquisado pelo curso
 for i in range(len(df['Nomes'])):
     print(df['Curso'][i])
@@ -42,4 +33,5 @@ for j in cod:
     for i in range(len(cols)):
         print(f'{df[cols[i]][j]:<{tab}}',end=' ')
     print()
-#'''
+#######################################################
+'''
