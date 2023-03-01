@@ -9,6 +9,8 @@ tab = 28
 cod = list()
 pesq = int
 
+print(df['Nomes'])
+
 '''
 #print em toda tabela
 for i in cols:
@@ -18,7 +20,7 @@ for j in range(len(df['Nomes'])):
     for i in range(len(cols)):
         print(f'{df[cols[i]][j]:<{tab}}',end=' ')
     print()
-'''
+
 cont = 0
 for i in opc:
     cont += 1
@@ -28,7 +30,6 @@ for i in range(len(opc)):
     if esc == i:
         pesq = opc[i]
 
-#'''
 #print pesquisado pelo curso
 for i in range(len(df['Nomes'])):
     print(df['Curso'][i])
@@ -42,4 +43,4 @@ for j in cod:
     for i in range(len(cols)):
         print(f'{df[cols[i]][j]:<{tab}}',end=' ')
     print()
-#'''
+'''

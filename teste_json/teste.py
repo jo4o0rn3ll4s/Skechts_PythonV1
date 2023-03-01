@@ -1,7 +1,7 @@
 import json
 
 #'''
-with open('ex_form/teste.json', 'r') as trans:
+with open('teste_json/teste.json', 'r') as trans:
     teste = json.load(trans)
 #'''
 '''
