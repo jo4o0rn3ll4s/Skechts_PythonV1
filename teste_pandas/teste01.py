@@ -32,7 +32,6 @@ for i in range(len(opc)):
 
 #print pesquisado pelo curso
 for i in range(len(df['Nomes'])):
-    print(df['Curso'][i])
     if df['Curso'][i] == pesq:
         cod.append(i)
 

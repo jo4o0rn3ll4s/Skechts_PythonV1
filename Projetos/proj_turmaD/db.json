@@ -1,0 +1,34 @@
+{
+    "cat":["A","B","AB"],
+    
+    "col":["nome","renach","cat","mensa","parc"],
+
+    "veiculos":{
+        "motos":["Factor"],
+        "carros":["Mobi","Fox"]      
+    },
+    "infos":{
+        "Factor":{
+            "instru":"Alberto",
+            "cor":"preta",
+            "placa":"ma0a00",
+            "km": 880,
+            "px_manu": 1000
+        },
+        "Mobi":{
+            "instru":"Alice",
+            "cor":"preta",
+            "placa":"ca0a00",
+            "km": 350,
+            "px_manu": 1000
+        },
+        "Fox":{
+            "instru":"Alvaro",
+            "cor":"preta",
+            "placa":"cb1b11",
+            "km": 900,
+            "px_manu": 1000
+        }
+
+    }
+}
