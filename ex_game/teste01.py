@@ -3,7 +3,7 @@ from pygame.locals import *
 
 pg.init()
 
-tela = pg.display.set_mode((1080,720))
+tela = pg.display.set_mode((1080,720), pg.RESIZABLE)
 #pg.display.set_caption('Teste')
 #back = pg.image.load('ex_game/long_backg.jpg').convert_alpha()
 

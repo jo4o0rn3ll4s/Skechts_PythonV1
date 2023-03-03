@@ -3,13 +3,13 @@ import pandas as pd
 turma = 1 #1 ou 2
 df = pd.read_csv('teste_pandas/teste_pd - Página'+str(turma)+'.csv')
 
-cols = ['Nomes','RG','CPF','CEP','Curso']
+cols = ('Nomes','RG','CPF','CEP','Curso')
 opc = ['programacao','excel','manutencao','informatica']
 tab = 28
 cod = list()
 pesq = int
 
-print(df['Nomes'])
+print(df)
 
 '''
 #print em toda tabela
@@ -20,11 +20,11 @@ for j in range(len(df['Nomes'])):
     for i in range(len(cols)):
         print(f'{df[cols[i]][j]:<{tab}}',end=' ')
     print()
-
+'''
 cont = 0
 for i in opc:
-    cont += 1
     print(cont, i)
+    cont += 1
 esc = int(input('Selecione o curso a pesquisar: '))
 for i in range(len(opc)):
     if esc == i:
@@ -43,4 +43,3 @@ for j in cod:
     for i in range(len(cols)):
         print(f'{df[cols[i]][j]:<{tab}}',end=' ')
     print()
-'''

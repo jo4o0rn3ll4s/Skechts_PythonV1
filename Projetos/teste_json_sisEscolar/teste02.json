@@ -1,0 +1,17 @@
+{
+    "Cursos": [ "a","b","c","d"],
+    "Alunos":[
+        {
+            "nome": "Aa",
+            "cpf": 1,
+            "telefone": 0,
+            "curso": "a"
+        },
+        {
+            "nome": "Aa",
+            "cpf": 1,
+            "telefone": 0,
+            "curso": "a"
+        }
+    ]
+}
