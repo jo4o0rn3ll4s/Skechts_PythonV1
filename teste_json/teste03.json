@@ -1,0 +1,24 @@
+{
+    "form":[
+        {
+                "per":"Meu nome e?",
+                "opc":["Jose","Joao","Jairo"],
+                "gab": 1
+        },
+        {
+                "per":"Minha idade e?",
+                "opc":["15","19","24"],
+                "gab": 1
+        },
+        {
+                "per":"Sou formado em?",
+                "opc":["Info","Mec","El"],
+                "gab": 2
+        },
+        {
+                "per":"Qual lingua eu n programo?",
+                "opc":["java","python","c/c++"],
+                "gab":0
+        }
+    ]
+}

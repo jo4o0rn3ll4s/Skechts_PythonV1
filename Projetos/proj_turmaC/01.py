@@ -1,8 +1,5 @@
-'''
+
 from database import form
-'''
-import json
-form = json.load(open('teste_json/teste02.json', 'r'))
 
 resp = list()
 point = 0
@@ -26,3 +23,5 @@ for i in range(len(form['gab'])):
     point += 1 if form['gab'][i] == resp[i] else 0
 
 print(resp, point)
+
+print('aprovado' if point >= 1 else 'reprovado')
