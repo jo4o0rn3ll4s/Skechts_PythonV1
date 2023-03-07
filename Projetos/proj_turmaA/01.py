@@ -16,9 +16,11 @@ while True:
     for event in pg.event.get():
         if event.type == QUIT:
             pg.quit()
+            
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
                 pg.quit()
+        '''
             if event.key == K_UP or event.key == K_w:
                 py -= 25
                 
@@ -30,7 +32,19 @@ while True:
                 
             if event.key == K_RIGHT or event.key == K_d:
                 px += 25
-        
+        '''
+        if pg.key.get_pressed()[K_w]:
+            py -= 25
+            
+        if pg.key.get_pressed()[K_s]:
+            py += 25
+            
+        if pg.key.get_pressed()[K_a]:
+            px -= 25
+            
+        if pg.key.get_pressed()[K_d]:
+            px += 25
+
         tela.fill((0,0,0))
         tela.blit(perso,(px,py))
         tela.blit(vila,(600,200))
