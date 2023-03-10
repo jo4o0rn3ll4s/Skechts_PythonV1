@@ -1,0 +1,44 @@
+[
+	{
+		"nome": "Lucas",
+		"sobrenome": "doiod",
+		"idade": 41,
+		"cpf": "12312312312",
+		"curso": "web design"
+	},
+	{
+		"nome": "Joao",
+		"sobrenome": "Ornellas",
+		"idade": 19,
+		"cpf": "12345678910",
+		"curso": "programacao"
+	},
+	{
+		"nome": "Maicon",
+		"sobrenome": "Douglas",
+		"idade": "19",
+		"cpf": "98765432110",
+		"curso": "Excel"
+	},
+	{
+		"nome": "Juscelino",
+		"sobrenome": "Kudecheque",
+		"idade": "89",
+		"cpf": "78945612379",
+		"curso": "Web Design"
+	},
+	{
+		"nome": "juh",
+		"sobrenome": "juba",
+		"idade": "17",
+		"cpf": "10191817161",
+		"curso": "Programacao"
+	},
+	{
+		"nome": "Mi",
+		"sobrenome": "Amor",
+		"idade": "19",
+		"cpf": "13467985210",
+		"curso": "Excel"
+	}
+]
