@@ -1,7 +1,7 @@
 import json
 import PySimpleGUI as sg
 
-caminho = 'Projetos/proj_turmaB/data.json'
+caminho = 'proj_turmaB/data.json'
 alunos = json.load(open(caminho))
 
 sg.theme('DarkAmber')
@@ -124,16 +124,20 @@ def excluir_aluno():
 #Funcao para listar todos os alunos - ta quebrado, to com sono n sei o erro
 def listar_alunos():
     
-    alunos = carregar_alunos()
+    alunos = json.load(open(caminho, 'r'))
     cols = ['nome', 'sobrenome','idade','cpf','curso']
     #print(alunos[0]['nome'])
     data = list()
+    '''
     i = 0
     while i < len(alunos):
         for j in cols:
             data.append(alunos[i][j])
         i+=1
-
+    '''    
+    '''for i in alunos:
+        for j in i:
+            data.append(j)'''
     layout = [[sg.Menu(menu_def, pad=(200,1))],
               [sg.Text('Listagem de Alunos Cadastrados')],
               [sg.Table(values = data ,headings = cols,key='tb',expand_x=True,expand_y=True,justification='right')]]

@@ -2,7 +2,7 @@
 import json as js
 import pandas as pd
 
-ende = 'Projetos/proj_turmaD/db'
+ende = 'proj_turmaD/db'
 db_csv = pd.read_csv(ende +'.csv')
 db_json = js.load(open(ende +'.json'))
 
