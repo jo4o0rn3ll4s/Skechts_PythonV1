@@ -3,49 +3,59 @@ from pygame.locals import *
 
 tela = pg.display.set_mode((1080,720),pg.RESIZABLE)
 
-perso = pg.Surface((80,240))
-perso.fill((255,255,255))
-px, py = (50,500)
+perso = pg.image.load('Projetos/proj_turmaA/sprites.png').conve
+perso_ani = []
+rec_perso = perso.get_rect()
+rec_perso.x = 50
+rec_perso.y = 500
 
 vila = pg.Surface((300,300))
 vila.fill((165,42,42))
+rec_vila = vila.get_rect()
+rec_vila.x = 600
+rec_vila.y = 200
 
+time = pg.time.Clock()
 
+spt_x = 32
+spt_y = 32
+
+for line in range(perso.get_height()//spt_y):
+    for col in range(perso.get_width()//spt_x):
+        x = col * spt_x
+        y = line * spt_y
+        trans = perso.subsurface(pg.Rect(x, y, spt_x, spt_y))
+        perso_ani.append(trans)
 
 while True:
+
+    time.tick(30)
+
     for event in pg.event.get():
         if event.type == QUIT:
-            pg.quit()
-            
+            pg.quit()    
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
                 pg.quit()
-        '''
-            if event.key == K_UP or event.key == K_w:
-                py -= 25
-                
-            if event.key == K_DOWN or event.key == K_s:
-                py += 25
-                
-            if event.key == K_LEFT or event.key == K_a:
-                px -= 25
-                
-            if event.key == K_RIGHT or event.key == K_d:
-                px += 25
-        '''
         if pg.key.get_pressed()[K_w]:
-            py -= 25
+            rec_perso.y -= 25
             
         if pg.key.get_pressed()[K_s]:
-            py += 25
+            rec_perso.y += 25
             
         if pg.key.get_pressed()[K_a]:
-            px -= 25
+            rec_perso.x -= 25
             
         if pg.key.get_pressed()[K_d]:
-            px += 25
+            rec_perso.x += 25
+            for i in range(8,12):
+                tela.blit(perso_ani[i])
+
+        if rec_perso.colliderect(rec_vila):
+            print('colidiu')
 
         tela.fill((0,0,0))
-        tela.blit(perso,(px,py))
-        tela.blit(vila,(600,200))
+        tela.blit(vila,rec_vila)
+        tela.blit(perso_ani[0],rec_perso)
+        
     pg.display.update()

@@ -1,5 +1,13 @@
 {
-    "nome":[["Joao","Juan","Ale"],["algo","n_sei","qualquer"]],
-    "idade":[19,18,20]
+    "pessoa":[
+        {
+            "nome":"João",
+            "idade":19
+        },
+        {
+            "nome":"Juan",
+            "idade":18
+        }
+    ]
 
 }
