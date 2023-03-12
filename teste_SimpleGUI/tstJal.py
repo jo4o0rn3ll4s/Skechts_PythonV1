@@ -85,5 +85,5 @@ def jalB():
             jalA()
     janelaB.close()
 
-
-main()
+if login():
+    main()
