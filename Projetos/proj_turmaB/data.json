@@ -2,16 +2,16 @@
 	{
 		"nome": "Lucas",
 		"sobrenome": "doiod",
-		"idade": 41,
+		"idade": "19",
 		"cpf": "12312312312",
-		"curso": "web design"
+		"curso": "Web Design"
 	},
 	{
 		"nome": "Joao",
 		"sobrenome": "Ornellas",
-		"idade": 19,
+		"idade": "19",
 		"cpf": "12345678910",
-		"curso": "programacao"
+		"curso": "Web Design"
 	},
 	{
 		"nome": "Maicon",
@@ -28,24 +28,38 @@
 		"curso": "Web Design"
 	},
 	{
-		"nome": "juh",
-		"sobrenome": "juba",
-		"idade": "17",
-		"cpf": "10191817161",
-		"curso": "Programacao"
-	},
-	{
-		"nome": "Mi",
-		"sobrenome": "Amor",
-		"idade": "19",
-		"cpf": "13467985210",
-		"curso": "Excel"
-	},
-	{
 		"nome": "Rodrigo",
 		"sobrenome": "Paix\u00e3o",
 		"idade": "18",
 		"cpf": "97643125810",
 		"curso": "Excel"
+	},
+	{
+		"nome": "Davi",
+		"sobrenome": "Ferreira",
+		"idade": "8",
+		"cpf": "10101092834",
+		"curso": "Rob\u00f3tica"
+	},
+	{
+		"nome": "Juan",
+		"sobrenome": "Stone",
+		"idade": "18",
+		"cpf": "69696969696",
+		"curso": "Rob\u00f3tica"
+	},
+	{
+		"nome": "Claudinei",
+		"sobrenome": "Soares",
+		"idade": "79",
+		"cpf": "11111111111",
+		"curso": "Rob\u00f3tica"
+	},
+	{
+		"nome": "Matheus",
+		"sobrenome": "Soares",
+		"idade": "37",
+		"cpf": "22222222222",
+		"curso": "Programa\u00e7\u00e3o"
 	}
 ]

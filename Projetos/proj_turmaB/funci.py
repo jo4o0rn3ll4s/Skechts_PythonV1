@@ -3,10 +3,11 @@ import PySimpleGUI as sg
 
 caminho = 'proj_turmaB/data.json'
 alunos = json.load(open(caminho))
+cursos = ['Programação', 'Excel', 'Web Design', 'Robótica']
 
 sg.theme('DarkAmber')
 menu_def = [['Registros', ['Cadastrar Alunos', 'Atualizar Informações de um Aluno', 'Excluir Aluno']],
-            ['Pesquisas', ['Listar todos os alunos','Filtrar Alunos por curso']],
+            ['Pesquisas', ['Listar todos os alunos']],
             ['Sair', ['Sair']]]
 
 
@@ -16,11 +17,11 @@ def carregar_alunos():
         with open(caminho, 'r') as openfile:
             alunos = json.load(openfile)
             if len(alunos) == 0:
-                print("Nenhum aluno cadastrado!")
+                sg.popup("Nenhum aluno cadastrado!")
                 return None
             return alunos
     except:
-        print("Erro ao carregar os alunos.")
+        sg.popup("Erro ao carregar os alunos.")
         return None
 
 
@@ -37,12 +38,12 @@ def cadastrar_aluno():
               [sg.Text('Digite o sobrenome do aluno: '), sg.InputText(key='sobrenome')],
               [sg.Text('Digite a idade do aluno: '), sg.InputText(key='idade')],
               [sg.Text('Digite o CPF do aluno:'),sg.InputText(key='cpf')],
-              [sg.Text('Selecione o curso desejado: '),sg.Combo(values=('Programacao', 'Excel', 'Web Design','Robotica'), key='curso')],
+              [sg.Text('Selecione o curso desejado: '),sg.Combo(values=cursos, key='curso')],
               [sg.Button('Cadastrar')]]
     window = sg.Window('Cadastro de Aluno', layout)
     
     while True:
-        event, values = window.read()
+        event, values = window.read(timeout=100)
         if event == sg.WIN_CLOSED or event == 'Sair':
             window.close()
             break
@@ -63,11 +64,12 @@ def atualizar_aluno():
     #nome_completo = input("Digite o nome completo do aluno a ser excluido: ")
 
     while True:
-        event, values = window.read()
-        nome, sobrenome = values['nome_completo'].split(' ', 1)
+        event, values = window.read(timeout=100)
+
         if event == sg.WIN_CLOSED or event == 'Sair':
             break
         if event == 'bt':
+            nome, sobrenome = str(values['nome_completo']).split(' ',1)
             subs(nome, sobrenome)
 
 
@@ -75,24 +77,26 @@ def atualizar_aluno():
 def subs(nome, sobrenome):#interage com atualizar_aluno
     layout = [[sg.Text('Digite a nova idade do aluno: '),sg.InputText(key='idade')],
               [sg.Text('Digite o novo cpf do aluno: '),sg.InputText(key='cpf')],
-              [sg.Text('Selecione o novo curso do aluno:'),sg.Combo(values=('Programacao', 'Excel', 'Web Design','Robotica'), key='curso')],
+              [sg.Text('Selecione o novo curso do aluno:'),sg.OptionMenu(values=cursos, key='curso')],
               [sg.Button('Atualizar', key = 'atu')]]
     windown = sg.Window('',layout)
-
+    
     while True:
-        event,values = windown.read()
+        event,values = windown.read(timeout=100)
+        if event == sg.WIN_CLOSED:
+            break
         if event == 'atu':
             for aluno in alunos:
                 if aluno['nome'].lower() == nome.lower() and aluno['sobrenome'].lower() == sobrenome.lower():
-                    sg.popup(f"Atualizando informacoes do aluno {nome} {sobrenome}:")
-                    aluno['idade'] = values['idade']
-                    aluno['cpf'] = values['cpf']
-                    aluno['curso'] = values['curso']
+                    aluno['idade'] = values['idade'] if values['idade'] != '' else aluno['idade']
+                    aluno['cpf'] = values['cpf'] if values['cpf'] != '' else aluno['cpf']
+                    aluno['curso'] = values['curso'] if values['curso'] != '' else aluno['curso']
                     salvar_alunos(alunos)
-                    sg.popup(f"Informacoes do aluno {nome} {sobrenome} atualizadas com sucesso!")
+                    sg.popup(f"Informacoes do aluno {nome} {sobrenome} atualizadas com sucesso!",auto_close = True, auto_close_duration = 3)
+                    windown.close()
                     return
             sg.popup(f"Não foi encontrado nenhum aluno com o nome {nome} {sobrenome}.")
-        windown.close()
+    windown.close()
 
 
 #Funcao para excluir aluno
@@ -121,46 +125,54 @@ def excluir_aluno():
     window.close()
 
 
-#Funcao para listar todos os alunos - ta quebrado, to com sono n sei o erro
+#Funcao para listar apenas os alunos em determinado curso
 def listar_alunos():
-    
+
+
+    #busca e cria uma lista formatada para o sg.table
     alunos = json.load(open(caminho, 'r'))
-    cols = ['nome', 'sobrenome','idade','cpf','curso']
-    #print(alunos[0]['nome'])
+    cols = ['nome','sobrenome','idade','cpf','curso']
+    lastvalue = None
     data = list()
-    '''
-    i = 0
-    while i < len(alunos):
-        for j in cols:
-            data.append(alunos[i][j])
-        i+=1
-    '''    
-    '''for i in alunos:
-        for j in i:
-            data.append(j)'''
+    
     layout = [[sg.Menu(menu_def, pad=(200,1))],
-              [sg.Text('Listagem de Alunos Cadastrados')],
+              [sg.Text('Listagem de Alunos no curso:'),sg.OptionMenu(values=['Todos']+ [i for i in cursos],default_value='Todos', key='opc')],
               [sg.Table(values = data ,headings = cols,key='tb',expand_x=True,expand_y=True,justification='right')]]
     window = sg.Window('Lista de Alunos', layout)
-    #carregar_alunos()
+
     while True:
-        event = window.read()
+        event, values = window.read(timeout=100)
         if event == sg.WIN_CLOSED or event == 'Sair':
             break
+        
+        if values['opc'] != lastvalue:
+            lastvalue = values['opc']
+            data = list()
+            window['tb'].update(values = data)
+            if lastvalue != 'Todos':
+                j = 0
+                while j < len(alunos):
+                    i = 0
+                    mid = list()
+                    if alunos[j]['curso'] == values['opc']:
+                        while i < len(cols):
+                            mid.append(alunos[j][cols[i]])
+                            i += 1
+                        data.append(mid)
+                    j += 1
+                window['tb'].update(values = data)
+            else:
+                j = 0
+                while j < len(alunos):
+                    i = 0
+                    mid = list()
+                    while i < len(cols):
+                        mid.append(alunos[j][cols[i]])
+                        i += 1
+                    data.append(mid)
+                    j += 1
+                window['tb'].update(values = data)
     window.close()
-    return data
-
-#Funcao para listar apenas os alunos em determinado curso
-def filtrar_alunos_por_curso():
-    curso = input("Digite o curso a ser filtrado (Programacao, Excel, Web Design ou Robotica): ")
-    carregar_alunos()
-    alunos_filtrados = [aluno for aluno in alunos if aluno['curso'].lower() == curso.lower()]
-    if len(alunos_filtrados) == 0:
-        print("Nao ha alunos cadastrados neste curso.")
-    else:
-        print(f"Alunos do curso de {curso}:")
-        for aluno in alunos_filtrados:
-            print(f"Nome: {aluno['nome']} {aluno['sobrenome']}, Idade: {aluno['idade']}, Cpf: {aluno['cpf']}, Professor: {professor_do_curso(aluno['curso'])}")
 
 
 #Funcao para definir qual professor pertence a cada curso
@@ -178,16 +190,14 @@ def professor_do_curso(curso):
 
 
 #Menu 
-while True:
+'''while True:
     alunos = carregar_alunos()
-    print(len(alunos))
     print("Selecione uma opcao:")
     print("1 - Cadastrar aluno")
     print("2 - Atualizar informacoes de um aluno")
     print("3 - Excluir aluno")
     print("4 - Listar todos os alunos")
-    print("5 - Filtrar alunos por curso")
-    print("6 - Sair")
+    print("5 - Sair")
     opcao = int(input())
 
     if opcao == 1:
@@ -197,10 +207,8 @@ while True:
     elif opcao == 3:
         excluir_aluno()
     elif opcao == 4:
-        print(listar_alunos())
+        listar_alunos()
     elif opcao == 5:
-        filtrar_alunos_por_curso()
-    elif opcao == 6:
         break
     else:
-        print("Opcao invalida. Tente novamente.")
+        print("Opcao invalida. Tente novamente.")'''
