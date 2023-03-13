@@ -1,0 +1,18 @@
+{
+  "alunos": {
+    "1": {
+      "name": "Lucas",
+      "renach": "RJ010203040",
+      "categories": {
+        "A": true,
+        "B": true,
+        "C": false,
+        "D": false,
+        "E": false
+      },
+      "total_instalment": 10,
+      "paid_instalment": 0,
+      "status": "matriculado"
+    }
+  }
+}
