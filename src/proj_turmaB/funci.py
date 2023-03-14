@@ -1,7 +1,7 @@
 import json
 import PySimpleGUI as sg
 
-caminho = 'proj_turmaB/data.json'
+caminho = 'src/proj_turmaB/data.json'
 alunos = json.load(open(caminho))
 cursos = ['Programação', 'Excel', 'Web Design', 'Robótica']
 
@@ -45,7 +45,6 @@ def cadastrar_aluno():
     while True:
         event, values = window.read(timeout=100)
         if event == sg.WIN_CLOSED or event == 'Sair':
-            window.close()
             break
         if event == 'Cadastrar':
             alunos.append({"nome": values['nome'], "sobrenome": values['sobrenome'], "idade": values['idade'], "cpf": values['cpf'], "curso": values['curso']})
@@ -71,8 +70,6 @@ def atualizar_aluno():
         if event == 'bt':
             nome, sobrenome = str(values['nome_completo']).split(' ',1)
             subs(nome, sobrenome)
-
-
     window.close()
 def subs(nome, sobrenome):#interage com atualizar_aluno
     layout = [[sg.Text('Digite a nova idade do aluno: '),sg.InputText(key='idade')],

@@ -9,7 +9,7 @@ def login():
 
     window = sg.Window ( 'CVTI SYSTEM 2023', layout)
 
-    login = 'a'
+    login = 'adm'
     senha = '123'
 
     while True:

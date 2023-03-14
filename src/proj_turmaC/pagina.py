@@ -19,7 +19,7 @@ layout =[
         ]
 
 # Cria a Janela
-janela = sg.Window('Janela teste', layout)
+janela = sg.Window('Janela teste', layout, resizable=True)
 
 # Loop pra processar os "eventos" e pegar os valores inseridos na janela
 while True:
