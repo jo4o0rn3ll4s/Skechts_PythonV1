@@ -1,3 +1,15 @@
+def valicpf():
+    while True:
+        cond = False
+        cpf = input('Digite seu CPF: ')
+        print(len(cpf))
+        if len(cpf) == 11:
+            cond = True
+            break
+        else:
+            print('O cpf não foi digitado corretamente!')
+    return cond, cpf
+
 def vericpf(cpf):
     sep = list()
     num = list()
@@ -7,12 +19,13 @@ def vericpf(cpf):
      
     #separa o numero com 11 casas decimais em uma lista com os digitos independentes
     for i in range(0,11):
-        sep.insert(i, cpf//10**(10-i))
+        sep.insert(i, int(cpf)//10**(10-i))
+        print(sep)
      
     num.insert(0,sep[0])
     for i in range(1,11):
         num.insert(i, sep[i]-sep[i-1]*10)
-        
+        print(num)
     #começa a etapa de verificação dos digitos
      
     #laço para reaçização dos testes nos 2 digitos finais
@@ -27,7 +40,12 @@ def vericpf(cpf):
         #armazenamento do valor calculado
         val.insert(i, som % 11)
         dig.insert(i, 0 if val[i] >= 10 else 11 - val[i])
+        print(val, '\n', dig)
+        print(ckcpf)
         ckcpf.clear()
     #resposta da função
     return True if num[9] == dig[3] and num[10] == dig[1] else False
  
+estado, valor = valicpf()
+if estado:
+    print('valido' if vericpf(valor) else 'invalido')
